@@ -53,6 +53,9 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
+    flickraw (0.9.9)
+    flickraw-cached (20120701)
+      flickraw (>= 0.9)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -156,6 +159,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  flickraw-cached
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
