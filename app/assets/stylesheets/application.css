@@ -33,10 +33,11 @@ p.err {
   position: relative;
 }
 
-.photopage-clickable {
+.lower-box-clickable {
   background-color: rgba(1,1,1,0.1);
   bottom: 0;
-  height: 30%;
+  left: 0;
+  height: 5em;
   position: absolute;
   width: 100%;
 }

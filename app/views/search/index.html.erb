@@ -1,1 +1,7 @@
 <%= render 'search-form' %>
+
+<% if request.post? %>
+
+  <%= render 'index' %>
+
+<% end %>
