@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+
+.content {
+  margin-top: 1em;
+}
+
+p.err {
+  color: coral;
+}
+
+.pagination li,
+.pagination form {
+  display: inline;
+}
+
+.image-box {
+  display: inline-block;
+  position: relative;
+}
+
+.photopage-clickable {
+  background-color: rgba(1,1,1,0.1);
+  bottom: 0;
+  height: 30%;
+  position: absolute;
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}

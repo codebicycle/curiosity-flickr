@@ -1,0 +1,320 @@
+<button id="toggle-form-btn">toggle form</button>
+<div id="Main" class="<%= 'hide' if request.post? %>">
+
+<h3 id="yui_3_11_0_1_1476518376770_335"><b>flickr.photos.search</b></h3>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="yui_3_11_0_1_1476518376770_340">
+<tbody id="yui_3_11_0_1_1476518376770_339"><tr valign="top" id="yui_3_11_0_1_1476518376770_338">
+<td width="60%" id="yui_3_11_0_1_1476518376770_337">
+
+<h4>Arguments</h4>
+
+<%= form_tag('/search', method: 'post', id: 'photos-search-form') do %>
+<input type="hidden" name="method" value="flickr.photos.search">
+
+<table id="Explorer" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td title="The NSID of the user who's photo to search. If this parameter isn't passed then everybody's public photos will be searched. A value of &quot;me&quot; will search against the calling user's photos for authenticated calls.">user_id</td>
+    <td>optional</td>
+    <td><input type="text" name="param_user_id" id="param_user_id" value="<%= params[:param_user_id] %>"></td>
+  </tr>
+  <tr>
+    <td title="A comma-delimited list of tags. Photos with one or more of the tags listed will be returned. You can exclude results that match a term by prepending it with a - character.">tags</td>
+    <td>optional</td>
+    <td><input type="text" name="param_tags" id="param_tags" value="<%= params[:param_tags] %>"></td>
+  </tr>
+  <tr>
+    <td title="Either 'any' for an OR combination of tags, or 'all' for an AND combination. Defaults to 'any' if not specified.">tag_mode</td>
+    <td>optional</td>
+    <td><input type="text" name="param_tag_mode" id="param_tag_mode" value="<%= params[:param_tag_mode] %>"></td>
+  </tr>
+  <tr>
+    <td title="A free text search. Photos who's title, description or tags contain the text will be returned. You can exclude results that match a term by prepending it with a - character.">text</td>
+    <td>optional</td>
+    <td><input type="text" name="param_text" id="param_text" value="<%= params[:param_text] %>"></td>
+  </tr>
+  <tr>
+    <td title="Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date can be in the form of a unix timestamp or mysql datetime.">min_upload_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_min_upload_date" id="param_min_upload_date" value="<%= params[:param_min_upload_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date can be in the form of a unix timestamp or mysql datetime.">max_upload_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_max_upload_date" id="param_max_upload_date" value="<%= params[:param_max_upload_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date can be in the form of a mysql datetime or unix timestamp.">min_taken_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_min_taken_date" id="param_min_taken_date" value="<%= params[:param_min_taken_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date can be in the form of a mysql datetime or unix timestamp.">max_taken_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_max_taken_date" id="param_max_taken_date" value="<%= params[:param_max_taken_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="The license id for photos (for possible values see the flickr.photos.licenses.getInfo method). Multiple licenses may be comma-separated.">license</td>
+    <td>optional</td>
+    <td><input type="text" name="param_license" id="param_license" value="<%= params[:param_license] %>"></td>
+  </tr>
+  <tr>
+    <td title="The order in which to sort returned photos. Deafults to date-posted-desc (unless you are doing a radial geo query, in which case the default sorting is by ascending distance from the point specified). The possible values are: date-posted-asc, date-posted-desc, date-taken-asc, date-taken-desc, interestingness-desc, interestingness-asc, and relevance.">sort</td>
+    <td>optional</td>
+    <td><input type="text" name="param_sort" id="param_sort" value="<%= params[:param_sort] %>"></td>
+  </tr>
+  <tr>
+    <td title="Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:
+
+1 public photos
+2 private photos visible to friends
+3 private photos visible to family
+4 private photos visible to friends &amp; family
+5 completely private photos
+
+">privacy_filter</td>
+    <td>optional</td>
+    <td><input type="text" name="param_privacy_filter" id="param_privacy_filter" value="<%= params[:param_privacy_filter] %>"></td>
+  </tr>
+  <tr>
+    <td title="A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched.
+
+The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.
+
+Longitude has a range of -180 to 180 , latitude of -90 to 90. Defaults to -180, -90, 180, 90 if not specified.
+
+Unlike standard photo queries, geo (or bounding box) queries will only return 250 results per page.
+
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters — If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).">bbox</td>
+    <td>optional</td>
+    <td><input type="text" name="param_bbox" id="param_bbox" value="<%= params[:param_bbox] %>"></td>
+  </tr>
+  <tr>
+    <td title="Recorded accuracy level of the location information.  Current range is 1-16 : 
+
+
+World level is 1
+Country is ~3
+Region is ~6
+City is ~11
+Street is ~16
+
+
+Defaults to maximum value if not specified.">accuracy</td>
+    <td>optional</td>
+    <td><input type="text" name="param_accuracy" id="param_accuracy" value="<%= params[:param_accuracy] %>"></td>
+  </tr>
+  <tr>
+    <td title="Safe search setting:
+
+
+1 for safe.
+2 for moderate.
+3 for restricted.
+
+
+(Please note: Un-authed calls can only see Safe content.)">safe_search</td>
+    <td>optional</td>
+    <td><input type="text" name="param_safe_search" id="param_safe_search" value="<%= params[:param_safe_search] %>"></td>
+  </tr>
+  <tr>
+    <td title="Content Type setting:
+
+1 for photos only.
+2 for screenshots only.
+3 for 'other' only.
+4 for photos and screenshots.
+5 for screenshots and 'other'.
+6 for photos and 'other'.
+7 for photos, screenshots, and 'other' (all).
+">content_type</td>
+    <td>optional</td>
+    <td><input type="text" name="param_content_type" id="param_content_type" value="<%= params[:param_content_type] %>"></td>
+  </tr>
+  <tr>
+    <td title="Aside from passing in a fully formed machine tag, there is a special syntax for searching on specific properties :
+
+
+  Find photos using the 'dc' namespace :    &quot;machine_tags&quot; => &quot;dc:&quot;
+
+   Find photos with a title in the 'dc' namespace : &quot;machine_tags&quot; => &quot;dc:title=&quot;
+
+  Find photos titled &quot;mr. camera&quot; in the 'dc' namespace : &quot;machine_tags&quot; => &quot;dc:title=\&quot;mr. camera\&quot;
+
+  Find photos whose value is &quot;mr. camera&quot; : &quot;machine_tags&quot; => &quot;*:*=\&quot;mr. camera\&quot;&quot;
+
+  Find photos that have a title, in any namespace : &quot;machine_tags&quot; => &quot;*:title=&quot;
+
+  Find photos that have a title, in any namespace, whose value is &quot;mr. camera&quot; : &quot;machine_tags&quot; => &quot;*:title=\&quot;mr. camera\&quot;&quot;
+
+  Find photos, in the 'dc' namespace whose value is &quot;mr. camera&quot; : &quot;machine_tags&quot; => &quot;dc:*=\&quot;mr. camera\&quot;&quot;
+
+ 
+
+Multiple machine tags may be queried by passing a comma-separated list. The number of machine tags you can pass in a single query depends on the tag mode (AND or OR) that you are querying with. &quot;AND&quot; queries are limited to (16) machine tags. &quot;OR&quot; queries are limited
+to (8).">machine_tags</td>
+    <td>optional</td>
+    <td><input type="text" name="param_machine_tags" id="param_machine_tags" value="<%= params[:param_machine_tags] %>"></td>
+  </tr>
+  <tr>
+    <td title="Either 'any' for an OR combination of tags, or 'all' for an AND combination. Defaults to 'any' if not specified.">machine_tag_mode</td>
+    <td>optional</td>
+    <td><input type="text" name="param_machine_tag_mode" id="param_machine_tag_mode" value="<%= params[:param_machine_tag_mode] %>"></td>
+  </tr>
+  <tr>
+    <td title="The id of a group who's pool to search.  If specified, only matching photos posted to the group's pool will be returned.">group_id</td>
+    <td>optional</td>
+    <td><input type="text" name="param_group_id" id="param_group_id" value="<%= params[:param_group_id] %>"></td>
+  </tr>
+  <tr>
+    <td title="Search your contacts. Either 'all' or 'ff' for just friends and family. (Experimental)">contacts</td>
+    <td>optional</td>
+    <td><input type="text" name="param_contacts" id="param_contacts" value="<%= params[:param_contacts] %>"></td>
+  </tr>
+  <tr>
+    <td title="A 32-bit identifier that uniquely represents spatial entities. (not used if bbox argument is present). 
+
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters — If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).">woe_id</td>
+    <td>optional</td>
+    <td><input type="text" name="param_woe_id" id="param_woe_id" value="<%= params[:param_woe_id] %>"></td>
+  </tr>
+  <tr>
+    <td title="A Flickr place id.  (not used if bbox argument is present).
+
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters — If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).">place_id</td>
+    <td>optional</td>
+    <td><input type="text" name="param_place_id" id="param_place_id" value="<%= params[:param_place_id] %>"></td>
+  </tr>
+  <tr>
+    <td title="Filter results by media type. Possible values are all (default), photos or videos">media</td>
+    <td>optional</td>
+    <td><input type="text" name="param_media" id="param_media" value="<%= params[:param_media] %>"></td>
+  </tr>
+  <tr>
+    <td title="Any photo that has been geotagged, or if the value is &quot;0&quot; any photo that has not been geotagged.
+
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters — If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).">has_geo</td>
+    <td>optional</td>
+    <td><input type="text" name="param_has_geo" id="param_has_geo" value="<%= params[:param_has_geo] %>"></td>
+  </tr>
+  <tr>
+    <td title="Geo context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to search for photos that were taken &quot;indoors&quot; or &quot;outdoors&quot;. 
+The current list of context IDs is :
+
+0, not defined.
+1, indoors.
+2, outdoors.
+
+
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters — If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).">geo_context</td>
+    <td>optional</td>
+    <td><input type="text" name="param_geo_context" id="param_geo_context" value="<%= params[:param_geo_context] %>"></td>
+  </tr>
+  <tr>
+    <td title="A valid latitude, in decimal format, for doing radial geo queries.
+
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters — If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).">lat</td>
+    <td>optional</td>
+    <td><input type="text" name="param_lat" id="param_lat" value="<%= params[:param_lat] %>"></td>
+  </tr>
+  <tr>
+    <td title="A valid longitude, in decimal format, for doing radial geo queries.
+
+Geo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against &quot;parameterless searches&quot; for queries without a geo component.
+
+A tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters — If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future).">lon</td>
+    <td>optional</td>
+    <td><input type="text" name="param_lon" id="param_lon" value="<%= params[:param_lon] %>"></td>
+  </tr>
+  <tr>
+    <td title="A valid radius used for geo queries, greater than zero and less than 20 miles (or 32 kilometers), for use with point-based geo queries. The default value is 5 (km).">radius</td>
+    <td>optional</td>
+    <td><input type="text" name="param_radius" id="param_radius" value="<%= params[:param_radius] %>"></td>
+  </tr>
+  <tr>
+    <td title="The unit of measure when doing radial geo queries. Valid options are &quot;mi&quot; (miles) and &quot;km&quot; (kilometers). The default is &quot;km&quot;.">radius_units</td>
+    <td>optional</td>
+    <td><input type="text" name="param_radius_units" id="param_radius_units" value="<%= params[:param_radius_units] %>"></td>
+  </tr>
+  <tr>
+    <td title="Limit the scope of the search to only photos that are part of the Flickr Commons project. Default is false.">is_commons</td>
+    <td>optional</td>
+    <td><input type="text" name="param_is_commons" id="param_is_commons" value="<%= params[:param_is_commons] %>"></td>
+  </tr>
+  <tr>
+    <td title="Limit the scope of the search to only photos that are in a gallery?  Default is false, search all photos.">in_gallery</td>
+    <td>optional</td>
+    <td><input type="text" name="param_in_gallery" id="param_in_gallery" value="<%= params[:param_in_gallery] %>"></td>
+  </tr>
+  <tr>
+    <td title="Limit the scope of the search to only photos that are for sale on Getty. Default is false.">is_getty</td>
+    <td>optional</td>
+    <td><input type="text" name="param_is_getty" id="param_is_getty" value="<%= params[:param_is_getty] %>"></td>
+  </tr>
+  <tr>
+    <td title="A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views.">extras</td>
+    <td>optional</td>
+    <td><input type="text" name="param_extras" id="param_extras" value="<%= params[:param_extras] %>"></td>
+  </tr>
+  <tr>
+    <td title="Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.">per_page</td>
+    <td>optional</td>
+    <td><input type="text" name="param_per_page" id="param_per_page" value="<%= params[:param_per_page] %>"></td>
+  </tr>
+  <tr>
+    <td title="The page of results to return. If this argument is omitted, it defaults to 1.">page</td>
+    <td>optional</td>
+    <td><input type="text" name="param_page" id="param_page" value="<%= params[:param_page] %>"></td>
+  </tr>
+</tbody></table>
+
+<br>
+
+<input type="submit" value="Call Method...">
+<% end %>
+
+<p><a href="/services/api/flickr.photos.search.htm">flickr.photos.search documentation</a></p>
+
+</td>
+
+<td><img src="https://s.yimg.com/pw/images/spaceball.gif" width="50" height="1" style="border: 0" alt="spacer"></td>
+
+<td id="yui_3_11_0_1_1477049917651_254">
+
+<h4>Useful Values</h4>
+
+<p id="yui_3_11_0_1_1477049917651_253">
+
+  <b>Recent public photo IDs:</b><br>
+  30380229301 - Hihi<br>
+  30430260816 - Through the hole in the heath.<br>
+  30467002875 - tohokusci20150328002601<br>
+  <br>
+
+  <b>Popular public group IDs:</b><br>
+  1577604@N20 - ｡˚ ◢Group wi†h Ҽxperience◣º°<br>
+  16978849@N00 - Black and White<br>
+  34427469792@N01 - FlickrCentral<br>
+  <br>
+
+
+</p></td></tr></tbody></table>
+
+</div>
