@@ -1,5 +1,5 @@
 <div class="content">
-  <% @photos.each do |photo| %>
+  <% @out[:photos].each do |photo| %>
   <div class="image-box">
     <a href="<%= FlickRaw.url_b(photo) %>">
       <img src="<%= FlickRaw.url_n(photo) %>">

@@ -1,0 +1,11 @@
+<ul class="pagination">
+  <% @out[:pagination][:pages].each do |page| %>
+    <li>
+    <% if page == @out[:pagination][:current] %>
+      <%= page %>
+    <% else %>
+      <a href="#" class="pagination-link" data-param_page="<%= page %>" data-form="photos-search-form"><%= page %></a>
+    <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -1,7 +1,7 @@
 <%= render 'search-form' %>
 
 <% if request.post? %>
-
+  <%= render 'pagination' %>
   <%= render 'index' %>
-
+  <%= render 'pagination' %>
 <% end %>
