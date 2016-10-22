@@ -1,5 +1,4 @@
-<button id="toggle-form-btn">toggle form</button>
-<div id="Main" class="<%= 'hide' if request.post? %>">
+<div id="Main">
 
 <h3 id="yui_3_11_0_1_1476518376770_335"><b>flickr.photos.search</b></h3>
 
@@ -9,7 +8,7 @@
 
 <h4>Arguments</h4>
 
-<%= form_tag('/search', method: 'post', id: 'photos-search-form') do %>
+<%= form_tag('/search#photos', method: 'post', id: 'photos-search-form') do %>
 <input type="hidden" name="method" value="flickr.photos.search">
 
 <table id="Explorer" cellspacing="0" width="100%">

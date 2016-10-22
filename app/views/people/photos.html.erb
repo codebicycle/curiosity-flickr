@@ -1,0 +1,13 @@
+<%= render 'people-photos-form' %>
+
+<% if request.post? %>
+  <% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% else %>
+    <div id="photos">
+      <%= render 'shared/pagination' %>
+      <%= render 'shared/index' %>
+      <%= render 'shared/pagination' %>
+    </div>
+  <% end %>
+<% end %>

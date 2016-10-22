@@ -1,0 +1,138 @@
+<div id="Main">
+
+
+<h3><b>flickr.people.getPhotos</b></h3>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td width="60%">
+
+<h4>Arguments</h4>
+
+<%= form_tag('/people/photos#photos', method: 'post', id: 'people-photos-form') do %>
+<input type="hidden" name="method" value="flickr.people.getPhotos">
+
+
+<table id="Explorer" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th>Name</th>
+    <th>Send</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td title="The NSID of the user who's photos to return. A value of &quot;me&quot; will return the calling user's photos.">user_id</td>
+    <td>required</td>
+    <td><input type="text" name="param_user_id" id="param_user_id" value="<%= params[:param_user_id] %>"></td>
+  </tr>
+  <tr>
+    <td title="Safe search setting:
+
+
+1 for safe.
+2 for moderate.
+3 for restricted.
+
+
+(Please note: Un-authed calls can only see Safe content.)">safe_search</td>
+    <td>optional</td>
+    <td><input type="text" name="param_safe_search" id="param_safe_search" value="<%= params[:param_safe_search] %>"></td>
+  </tr>
+  <tr>
+    <td title="Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.">min_upload_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_min_upload_date" id="param_min_upload_date" value="<%= params[:param_min_upload_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.">max_upload_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_max_upload_date" id="param_max_upload_date" value="<%= params[:param_max_upload_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.">min_taken_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_min_taken_date" id="param_min_taken_date" value="<%= params[:param_min_taken_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.">max_taken_date</td>
+    <td>optional</td>
+    <td><input type="text" name="param_max_taken_date" id="param_max_taken_date" value="<%= params[:param_max_taken_date] %>"></td>
+  </tr>
+  <tr>
+    <td title="Content Type setting:
+
+1 for photos only.
+2 for screenshots only.
+3 for 'other' only.
+4 for photos and screenshots.
+5 for screenshots and 'other'.
+6 for photos and 'other'.
+7 for photos, screenshots, and 'other' (all).
+">content_type</td>
+    <td>optional</td>
+    <td><input type="text" name="param_content_type" id="param_content_type" value="<%= params[:param_content_type] %>"></td>
+  </tr>
+  <tr>
+    <td title="Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:
+
+1 public photos
+2 private photos visible to friends
+3 private photos visible to family
+4 private photos visible to friends &amp; family
+5 completely private photos
+">privacy_filter</td>
+    <td>optional</td>
+    <td><input type="text" name="param_privacy_filter" id="param_privacy_filter" value="<%= params[:param_privacy_filter] %>"></td>
+  </tr>
+  <tr>
+    <td title="A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views.">extras</td>
+    <td>optional</td>
+    <td><input type="text" name="param_extras" id="param_extras" value="<%= params[:param_extras] %>"></td>
+  </tr>
+  <tr>
+    <td title="Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.">per_page</td>
+    <td>optional</td>
+    <td><input type="text" name="param_per_page" id="param_per_page" value="<%= params[:param_per_page] %>"></td>
+  </tr>
+  <tr>
+    <td title="The page of results to return. If this argument is omitted, it defaults to 1.">page</td>
+    <td>optional</td>
+    <td><input type="text" name="param_page" id="param_page" value="<%= params[:param_page] %>"></td>
+  </tr>
+</tbody></table>
+
+
+<br>
+
+<input type="submit" value="Call Method...">
+<% end %>
+
+<p><a href="/services/api/flickr.people.getPhotos.htm">Back to the flickr.people.getPhotos documentation</a></p>
+
+</td>
+
+<td><img src="https://s.yimg.com/pw/images/spaceball.gif" width="50" height="1" style="border: 0" alt="spacer"></td>
+
+<td>
+
+<h4>Useful Values</h4>
+
+<p>
+
+  <b>Recent public photo IDs:</b><br>
+  30374487022 - tohokusci20150529031700<br>
+  30374487662 - OCTOBER 18 TREJO TULUM VIP_0000_<br>
+  30454775046 - 20161016NTC5_Cadet2-59.jpg<br>
+  <br>
+
+  <b>Popular public group IDs:</b><br>
+  1577604@N20 - ｡˚ ◢Group wi†h Ҽxperience◣º°<br>
+  16978849@N00 - Black and White<br>
+  34427469792@N01 - FlickrCentral<br>
+  <br>
+
+
+</p></td></tr></tbody></table>
+
+
+
+</div>

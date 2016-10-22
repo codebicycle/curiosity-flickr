@@ -1,7 +1,9 @@
 <%= render 'search-form' %>
 
 <% if request.post? %>
-  <%= render 'pagination' %>
-  <%= render 'index' %>
-  <%= render 'pagination' %>
+  <div id="photos">
+    <%= render 'shared/pagination' %>
+    <%= render 'shared/index' %>
+    <%= render 'shared/pagination' %>
+  </div>
 <% end %>

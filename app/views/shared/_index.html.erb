@@ -1,0 +1,9 @@
+<% @out[:photos].each do |photo| %>
+<div class="image-box">
+  <a href="<%= FlickRaw.url_b(photo) %>">
+    <img src="<%= FlickRaw.url_n(photo) %>">
+  </a>
+  <a href="<%= FlickRaw.url_photopage(photo) %>" class="lower-box-clickable"></a>
+</div>
+
+<% end %>

@@ -4,7 +4,7 @@
     <% if page == @out[:pagination][:current] %>
       <%= page %>
     <% else %>
-      <a href="#" class="pagination-link" data-param_page="<%= page %>" data-form="photos-search-form"><%= page %></a>
+      <a href="#" class="pagination-link" data-param_page="<%= page %>"><%= page %></a>
     <% end %>
     </li>
   <% end %>
