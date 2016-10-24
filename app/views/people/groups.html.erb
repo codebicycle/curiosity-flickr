@@ -1,0 +1,26 @@
+<%= render 'people-groups-form' %>
+
+<% if request.post? %>
+  <% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% else %>
+    <% @out.each do |group| %>
+      <div>
+        <h3><%= group['name'] %></h3>
+        <% if group.key? :err %>
+          <p class="err"><%= group[:err] %></p>
+        <% else %>
+        
+          <% group[:photos].each do |photo| %>
+          <div class="image-box">
+            <a href="<%= FlickRaw.url_b(photo) %>">
+              <img src="<%= FlickRaw.url_n(photo) %>">
+            </a>
+            <a href="<%= FlickRaw.url_photopage(photo) %>" class="lower-box-clickable"></a>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

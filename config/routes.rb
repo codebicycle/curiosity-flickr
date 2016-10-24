@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'search#index'
   match 'search', to: 'search#index', via: [:get, :post]
   match 'people/photos', to: 'people#photos', via: [:get, :post]
+  match 'people/groups', to: 'people#groups', via: [:get, :post]
 end

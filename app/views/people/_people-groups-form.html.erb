@@ -1,0 +1,74 @@
+<div id="Main">
+
+
+<h3><b>Person Photos from Groups</b></h3>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td width="60%">
+
+<h4>Arguments</h4>
+
+<%= form_tag('/people/groups#photos', method: 'post') do %>
+
+
+<table id="Explorer" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th>Name</th>
+    <th>Required</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td title="The NSID or URL of the user who's photos to return.">user_id OR url</td>
+    <td>required</td>
+    <td>
+      <%= text_field_tag(:user_id_or_url, params[:user_id_or_url]) %>
+    </td>
+  </tr>
+  <tr>
+    <td title="Number of groups to return per page. If this argument is omitted, it defaults to 10.">per_page</td>
+    <td>optional</td>
+    <td><input type="text" name="param_per_page" id="param_per_page" value="<%= params[:param_per_page] %>"></td>
+  </tr>
+  <tr>
+    <td title="The page of results to return. If this argument is omitted, it defaults to 1.">page</td>
+    <td>optional</td>
+    <td><input type="text" name="param_page" id="param_page" value="<%= params[:param_page] %>"></td>
+  </tr>
+</tbody></table>
+
+
+<br>
+
+<input type="submit" value="Get Photos from Groups">
+<% end %>
+
+
+</td>
+
+<td><img src="https://s.yimg.com/pw/images/spaceball.gif" width="50" height="1" style="border: 0" alt="spacer"></td>
+
+<td>
+
+<h4>Useful Values</h4>
+
+<p>
+
+  <b>Recent public photo IDs:</b><br>
+  30374487022 - tohokusci20150529031700<br>
+  30374487662 - OCTOBER 18 TREJO TULUM VIP_0000_<br>
+  30454775046 - 20161016NTC5_Cadet2-59.jpg<br>
+  <br>
+
+  <b>Popular public group IDs:</b><br>
+  1577604@N20 - ｡˚ ◢Group wi†h Ҽxperience◣º°<br>
+  16978849@N00 - Black and White<br>
+  34427469792@N01 - FlickrCentral<br>
+  <br>
+
+
+</p></td></tr></tbody></table>
+
+
+
+</div>
